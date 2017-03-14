@@ -1,0 +1,41 @@
+{% extends "/templates/base.html" %}
+
+{% block title %} user profil {% endblock %}
+     {% block head %}
+        {{ parent() }}
+     {% endblock %}
+
+     {% block content %}
+     
+        <table class="table table-hover">
+          <caption>
+              <strong>{{ title }}</strong>
+          </caption>
+          <thead>
+              <tr class="info" >
+                  <th>No</th>
+                  <th>Name</th>
+                  <th>Phone</th>
+                  <th>email</th>
+                  <th>Username</th>
+                  <th>Password</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for user in userdata %}
+              {% set i = i + 1 %}
+              <tr class="
+                        {% if i % 2 == 0  %} bg-success {% endif %}
+                        {% if i % 2 != 0  %} bg-danger {% endif %}" >
+                  <td>{{ i }}</td>
+                  <td>{{ user.name }}</td>
+                  <td>{{ user.phone }}</td>
+                  <td>{{ user.email }}</td>
+                  <td>{{ user.username }}</td>
+                  <td>{{ user.password }}</td>
+              </tr>
+          </tbody>
+          {% endfor %}
+        </table>
+
+    {% endblock %}
